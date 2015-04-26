@@ -1,11 +1,15 @@
 function b() {
-	console.log('Called b!');
+	var myVar;
+	console.log(myVar); 
 }
 
-b();
+function a() {
+	var myVar = 2;
+	console.log(myVar); 
+	b();                // undefined
+}
 
-console.log(a);
-
-var a = 'Hello World!';
-
-console.log(a);
+var myVar = 1;
+console.log(myVar);     // 1
+a();   				    // 2
+console.log(myVar);     // 1
