@@ -1,16 +1,16 @@
-// function b() {
-// 	console.log(myVar);     // 1
-// }
-
-function a() {
-
-	function b() {
-		console.log(myVar); // 2
-	}
-
-	var myVar = 2;          // a() Execution Context
-	b();
+// long running function
+function waitThreeSeconds() {
+	var ms = 3000 + new Date().getTime();
+	while (new Date() < ms){}
+	console.log('finished function');
 }
 
-var myVar = 1;              // Global Execution Context 
-a();
+function clickHandler() {
+	console.log('click event!');
+}
+
+// listen for the click event
+document.addEventListener('click', clickHandler);
+
+waitThreeSeconds();
+console.log('finished execution');
