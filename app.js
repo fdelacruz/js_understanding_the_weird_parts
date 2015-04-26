@@ -1,15 +1,16 @@
-function b() {
-	var myVar;
-	console.log(myVar); 
-}
+// function b() {
+// 	console.log(myVar);     // 1
+// }
 
 function a() {
-	var myVar = 2;
-	console.log(myVar); 
-	b();                // undefined
+
+	function b() {
+		console.log(myVar); // 2
+	}
+
+	var myVar = 2;          // a() Execution Context
+	b();
 }
 
-var myVar = 1;
-console.log(myVar);     // 1
-a();   				    // 2
-console.log(myVar);     // 1
+var myVar = 1;              // Global Execution Context 
+a();
