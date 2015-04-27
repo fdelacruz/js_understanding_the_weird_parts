@@ -1,16 +1,13 @@
-// long running function
-function waitThreeSeconds() {
-	var ms = 3000 + new Date().getTime();
-	while (new Date() < ms){}
-	console.log('finished function');
-}
+// var a = 3 + 4 * 5;
+// console.log(a); // 23
 
-function clickHandler() {
-	console.log('click event!');
-}
+// var a = 2, b = 3, c = 4;
 
-// listen for the click event
-document.addEventListener('click', clickHandler);
+// a = b = c; // right-to-left associativity, a = 4
 
-waitThreeSeconds();
-console.log('finished execution');
+// console.log(a); // 4
+// console.log(b); // 4
+// console.log(c); // 4
+
+var a = (3 + 4) * 5; // grouping
+console.log(a); // 35
