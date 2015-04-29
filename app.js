@@ -1,21 +1,20 @@
-var person = new Object();
+var Francisco = { 
+	firstname: 'Francisco', 
+	lastname: 'De La Cruz',
+	address: {
+		street: '111 Main St.',
+		city: 'New York',
+		state: 'NY'
+	}
+};
 
-person['firstname'] = 'Francisco';
-person['lastname'] = 'De La Cruz';
+function greet(person) {
+	console.log('Hi ' + person.firstname);
+}
 
-var firstNameProperty = 'firstname';
+greet(Francisco);
 
-console.log(person);
-console.log(person[firstNameProperty]);
-
-console.log(person.firstname);
-console.log(person.lastname);
-
-person.address = new Object();
-person.address.street = '111 Main St.';
-person.address.city = 'New York';
-person.address.state = 'NY';
-
-console.log(person.address.street);
-console.log(person.address.city);
-console.log(person['address']['state']);
+greet({
+	firstname: 'Mary',
+	lastname: 'Doe'
+});
