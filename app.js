@@ -1,9 +1,21 @@
-function greet() {          // name prpperty
-	console.log('hi');      // code prpperty, "invocable" ()
+greet(); 								
+
+function greet() {                      // function statements get hoisted
+	console.log('hi');
 }
 
-greet();
+// anonymousGreet(); 					
 
-greet.language = 'english'; // language prpperty
+var anonymousGreet = function() {      //  function expressions don't get hoisted
+	console.log('hi');
+};
 
-console.log(greet.language);
+anonymousGreet();
+
+function log(a) {
+	a();
+}
+
+log(function() {
+	console.log('hi');
+});
