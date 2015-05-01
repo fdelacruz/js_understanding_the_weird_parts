@@ -1,10 +1,9 @@
-var objectLiteral = {
-	firstname: 'Mary',
-	isAProgrammer: true
-};
+function greet() {          // name prpperty
+	console.log('hi');      // code prpperty, "invocable" ()
+}
 
-console.log(JSON.stringify(objectLiteral));
+greet();
 
-var jsonvalue = JSON.parse('{ "firstname": "Mary", "isAProgrammer": true }');
+greet.language = 'english'; // language prpperty
 
-console.log(jsonvalue);
+console.log(greet.language);
