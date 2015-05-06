@@ -1,10 +1,11 @@
-// IIFE
-(function(global, name) {
+function greet(whattosay) {
 
-	var greeting = 'Hello';
-	global.greeting = 'Hello'; // Override the Global greeting
-	console.log(greeting + ' ' + name);
+	return function(name) {
+		console.log(whattosay + ' ' + name);
+	};
 
-}(window, 'John')); // IIFE Execution Context
+}
 
-console.log(greeting); // Global Execution Context
+// greet('Hi')('Tony');
+var sayHi = greet('Hi'); // Same thing
+sayHi('Tony');
