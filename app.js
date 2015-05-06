@@ -1,21 +1,10 @@
-function greet(firstname, lastname, language) {
-
-	if (language === 'en') {
-		console.log('Hello ' + firstname + ' ' + lastname);
-	}
-
-	if (language === 'es') {
-		console.log('Hola ' + firstname + ' ' + lastname);
-	}
+function getPerson() {
+	// putting the first curly bracket in the next line results in an undefined
+	// return because of automatic semicolon insertion	
+	return {
+	// {
+		firstname: 'Tony'
+	};
 }
 
-function greetEnglish(firstname, lastname) {
-	greet(firstname, lastname, 'en');
-}
-
-function greetSpanish(firstname, lastname) {
-	greet(firstname, lastname, 'es');
-}
-
-greetEnglish('John', 'Doe');
-greetSpanish('John', 'Doe');
+console.log(getPerson());
