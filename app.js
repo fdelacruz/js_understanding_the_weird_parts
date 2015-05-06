@@ -1,10 +1,8 @@
-function getPerson() {
-	// putting the first curly bracket in the next line results in an undefined
-	// return because of automatic semicolon insertion	
-	return {
-	// {
-		firstname: 'Tony'
-	};
+var firstname, lastname, language;
+
+var person = {
+	firstname: 'John',
+	lastname: 'Doe'
 }
 
-console.log(getPerson());
+console.log(person);
