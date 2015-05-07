@@ -1,21 +1,31 @@
-function makeGreeting(language) {
+function sayHiLater() {
+	
+	var greeting = 'Hi!';
 
-	return function(firstname, lastname) {
+	setTimeout(function() {
+		
+		console.log(greeting);
 
-		if (language === 'en') {
-			console.log('Hello ' + firstname + ' ' + lastname);
-		}	
-
-		if (language === 'es') {
-			console.log('Hola ' + firstname + ' ' + lastname);
-		}
-
-	};
+	}, 3000);
 
 }
 
-var greetEnglish = makeGreeting('en');
-var greetSpanish = makeGreeting('es');
+sayHiLater();
 
-greetEnglish('John', 'Doe');
-greetSpanish('John', 'Doe');
+
+function tellMeWhenDone(cb) {
+
+	console.log(1); // some work
+	console.log(2); // some work
+	console.log(3); // some work
+
+	cb(); // the 'callback', it runs the function I give it
+}
+
+tellMeWhenDone(function() {
+	console.log('I am done!');
+});
+
+tellMeWhenDone(function() {
+	console.log('All done!');
+});
