@@ -1,40 +1,36 @@
-var person = {
-	firstname: 'Default',
-	lastname: 'Default',
-	getfullName: function() {
-		return this.firstname + ' ' + this.lastname;
-	}
-};
+// Function Constructors
+// function Person() {
+	
+// 	console.log(this); 		 // Object {} being returned
+// 	this.firstname = 'John'; // Object {firstname: "John"}
+// 	this.lastname = 'Doe'; 	 // Object {firstname: "John", lastname: "Doe"}
+// 	console.log('This function is invoked');
+	
+// 	// if I return something else the original Object doesn't get returned
+// 	// return { greeting: 'I got in the way!' }; // Object {greeting: "I got in the way!"}
+// }
 
-var john = {
-	firstname: 'John',
-	lastname: 'Doe'
+// var john = new Person();
+// console.log(john);
+
+// var jane = new Person({
+// 	firstname: 'Jane',
+// 	lastname: 'Doe'
+// });
+// console.log(jane);
+
+// Setting parameters 
+function Person(firstname, lastname) {
+	
+	console.log(this); 		 
+	this.firstname = firstname; 
+	this.lastname = lastname; 	 
+	console.log('This function is invoked');
+	
 }
 
-// don't do this EVER! for demo purposes only!!!
-john.__proto__  = person;
-
-for (var prop in john) {
-	if (john.hasOwnProperty(prop)) {
-		console.log(prop + ': ' + john[prop]);
-	}
-}
-
-var jane = {
-	address: '111 Main St.',
-	getFormalFullName: function() {
-		return this.lastname + ', ' + this.firstname;
-	}
-};
-
-var jim = {
-	getFirstName: function() {
-		return this.firstname;
-	}
-};
-
-_.extend(john, jane, jim);
-
+var john = new Person('John', 'Doe');
 console.log(john);
-console.log(john.getFormalFullName());
-console.log(john.getFirstName());
+
+var jane = new Person('Jane', 'Doe');
+console.log(jane);
