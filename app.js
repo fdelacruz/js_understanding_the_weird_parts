@@ -1,24 +1,8 @@
-var person = {
-	firstname: 'Default',
-	lastname: 'Default',
-	getfullName: function() {
-		return this.firstname + ' ' + this.lastname;
-	}
-};
+var a = {};
+// a.__proto__ -> Object {}
 
-var john = {
-	firstname: 'John',
-	lastname: 'Doe'
-}
+var b = function() {};
+// b.__proto__ -> function anonymous()
 
-// don't do this EVER! for demo purposes only!!!
-john.__proto__  = person;
-console.log(john.getfullName());
-console.log(john.firstname);
-
-var jane = {
-	firstname: 'Jane'
-}
-
-jane.__proto__ = person;
-console.log(jane.getfullName());
+var c = [];
+// c.__proto__ -> []
