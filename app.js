@@ -1,21 +1,26 @@
-Array.prototype.myCustomFeature = 'Cool!';
-
-var arr = ['John', 'Jane', 'Jim'];
-
-for (var prop in arr) {
-	console.log(prop + ': ' + arr[prop]);
+// Polyfill - executed if browser does not support Object.create
+if (!Object.create) {
+	Object.create = function(o) {
+		if (arguments.length > 1) {
+			throw new Error('Object.create implementation' + 
+					' only accepts the first parameter.');
+		}
+		function F() {}
+		F.prototype = o;
+		return new F();
+	};
 }
-// The for..in loop will iterate over all enumerable properties of the object
-// itself and those the object inherits from its constructor's prototype.
-// 0: John
-// 1: Jane
-// 2: Jim
-// myCustomFeature: Cool! // inherited property
 
-for (var i = 0; i < arr.length; i++) {
-	console.log(i + ': ' + arr[i]);
-}
-// The regular for loop enumerates only the elements of the array.
-// 0: John
-// 1: Jane
-// 2: Jim
+var person = {
+	firstname: 'Default',
+	lastname: 'Default',
+	greet: function() {
+		return 'Hi ' + this.firstname;
+	}
+};
+
+var john = Object.create(person);
+john.firstname = 'John';
+john.lastname = 'Doe';
+console.log(john);
+console.log(john.greet());
