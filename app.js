@@ -1,60 +1,55 @@
-var person = { 
-	firstname: 'John',
-	lastname: 'Doe',
-	getFullName: function() {
+var arr1 = [1,2,3];
+console.log(arr1);
 
-		var fullname = this.firstname + ' ' + this.lastname;
-		return fullname;
+var arr2 = [];
+for (var i = 0; i < arr1.length; i++) {
+	
+	arr2.push(arr1[i] * 2); // double
 
+}
+
+console.log(arr2);
+
+// functional version
+function mapForEach(arr, fn) {
+	
+	var newArr = [];
+	for(var i=0; i < arr.length; i++) {
+		newArr.push(
+			fn(arr[i])
+		);
 	}
-};
 
-var logName = function(lang1, lang2) {
-	
-	console.log('Logged: ' + this.getFullName());
-	console.log('Arguments: ' + lang1 + ' ' + lang2);
-	console.log('-----------');
-
-};
-
-// bind() makes a copy of the function
-var logPersonName = logName.bind(person);
-logPersonName('es', 'en');
-
-// call() executes the function
-logName.call(person, 'en', 'es');
-
-// apply() uses arrays as arguments
-logName.apply(person, ['es', 'en']);
-
-// apply() using an IIFE
-(function(lang1, lang2) {
-
-	 console.log('Logged: ' + this.getFullName());
-	 console.log('Arguments: ' + lang1 + ' ' + lang2);
-	 console.log('-----------');
-	 
- }).apply(person, ['en', 'es']);
-
-// function borrowing (using apply() or call())
-var person2 = {
-	firstname: 'Jane',
-	lastname: 'Doe'
+	return newArr;
 }
 
-console.log(person.getFullName.apply(person2));
+var arr3 = mapForEach(arr1, function(item) {
+	return item * 2; // double
+});
 
-// function currying (with bind() which makes a copy of the function)
-function multiply(a, b) {
+console.log(arr3);
 
-	return a*b;
-	
+// do something different
+var arr4 = mapForEach(arr1, function(item) {
+	return item > 2; // boolean
+});
+
+console.log(arr4);
+
+// another example
+var checkPastLimit = function(limiter, item) {
+	return item > limiter;
 }
 
-console.log('-----------');
+var arr5 = mapForEach(arr1, checkPastLimit.bind(this, 1));
+console.log(arr5);
 
-var multipleByTwo = multiply.bind(this, 2); // permanently setting a to 2
-console.log(multipleByTwo(4));
+// make it so the function just takes the limiter
+var checkPastLimitSimplified = function(limiter) {
+	return function(limiter, item) {
+		return item > limiter;
+	}.bind(this, limiter);
+};
 
-var multipleByTwo = multiply.bind(this, 3); // permanently setting a to 3
-console.log(multipleByTwo(4));
+var arr6 = mapForEach(arr1 , checkPastLimitSimplified(1));
+console.log(arr6);
