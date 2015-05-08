@@ -1,24 +1,14 @@
-function Person(firstname, lastname) {
-	
-	console.log(this); 		 
-	this.firstname = firstname; 
-	this.lastname = lastname; 	 
-	console.log('This function is invoked');
-	
-}
-
-Person.prototype.getFullName = function() {
-	return this.firstname + ' ' + this.lastname;
+String.prototype.isLengthGreaterThan = function(limit) {
+	return this.length > limit;
 };
 
-var john = new Person('John', 'Doe');
-console.log(john);
+console.log('John'.isLengthGreaterThan(2)); //  converted string primitive to String object
 
-var jane = new Person('Jane', 'Doe');
-console.log(jane);
-
-Person.prototype.getFormalName = function() {
-	return  this.lastname + ', ' + this.firstname;
+Number.prototype.isPositive = function() {
+	return this > 0;
 };
 
-console.log(john.getFormalName());
+// console.log(1.isPositive()); // Error: number primitives don't get converted
+
+var a = new Number(1);
+console.log(a.isPositive());
