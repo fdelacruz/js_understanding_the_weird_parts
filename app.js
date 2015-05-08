@@ -1,26 +1,25 @@
-// Polyfill - executed if browser does not support Object.create
-if (!Object.create) {
-	Object.create = function(o) {
-		if (arguments.length > 1) {
-			throw new Error('Object.create implementation' + 
-					' only accepts the first parameter.');
-		}
-		function F() {}
-		F.prototype = o;
-		return new F();
-	};
-}
+var people = [
+    {
+        // the 'john' object
+        firstname: 'John',
+        lastname: 'Doe',
+        addresses: [
+            '111 Main St.',
+            '222 Third St.'
+        ]
+    },
+    {
+        // the 'jane' object
+        firstname: 'Jane',
+        lastname: 'Doe',
+        addresses: [
+            '333 Main St.',
+            '444 Fifth St.'
+        ],
+        greet: function() {
+            return 'Hello!';   
+        }
+    }
+];
 
-var person = {
-	firstname: 'Default',
-	lastname: 'Default',
-	greet: function() {
-		return 'Hi ' + this.firstname;
-	}
-};
-
-var john = Object.create(person);
-john.firstname = 'John';
-john.lastname = 'Doe';
-console.log(john);
-console.log(john.greet());
+console.log(people);
