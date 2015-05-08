@@ -1,8 +1,40 @@
-var a = {};
-// a.__proto__ -> Object {}
+var person = {
+	firstname: 'Default',
+	lastname: 'Default',
+	getfullName: function() {
+		return this.firstname + ' ' + this.lastname;
+	}
+};
 
-var b = function() {};
-// b.__proto__ -> function anonymous()
+var john = {
+	firstname: 'John',
+	lastname: 'Doe'
+}
 
-var c = [];
-// c.__proto__ -> []
+// don't do this EVER! for demo purposes only!!!
+john.__proto__  = person;
+
+for (var prop in john) {
+	if (john.hasOwnProperty(prop)) {
+		console.log(prop + ': ' + john[prop]);
+	}
+}
+
+var jane = {
+	address: '111 Main St.',
+	getFormalFullName: function() {
+		return this.lastname + ', ' + this.firstname;
+	}
+};
+
+var jim = {
+	getFirstName: function() {
+		return this.firstname;
+	}
+};
+
+_.extend(john, jane, jim);
+
+console.log(john);
+console.log(john.getFormalFullName());
+console.log(john.getFirstName());
